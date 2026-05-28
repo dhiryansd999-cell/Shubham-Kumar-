@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shubham Kumar — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F8F7F4;--bg2:#FFFFFF;--black:#0A0A0A;--dark:#1A1A1A;--mid:#555;--light:#999;
+  --border:#E5E5E0;--blue:#0047FF;--blue-l:#EEF2FF;--blue-m:#DDEAFF;--tag:#F0F0ED;
+  --card:#FFF;--sh:0 2px 20px rgba(0,0,0,.06);--sh2:0 8px 40px rgba(0,0,0,.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--dark);overflow-x:hidden;cursor:none;}
+
+/* CURSOR */
+#cur{position:fixed;width:8px;height:8px;background:var(--blue);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .15s,height .15s;}
+#cur-r{position:fixed;width:28px;height:28px;border:1.5px solid var(--blue);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.5;transition:width .15s,height .15s,opacity .15s;}
+.cur-big #cur{width:14px;height:14px;}
+.cur-big #cur-r{width:44px;height:44px;opacity:.2;}
+@media(hover:none){#cur,#cur-r{display:none;}body{cursor:auto;}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(248,247,244,.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 60px;height:64px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:20px;color:var(--black);letter-spacing:-.5px;}
+.nav-logo sup{font-family:'Outfit',sans-serif;font-size:9px;color:var(--blue);font-weight:700;letter-spacing:2px;vertical-align:super;margin-left:2px;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--mid);text-decoration:none;letter-spacing:.3px;transition:color .2s;}
+.nav-links a:hover{color:var(--black);}
+.nav-dl{padding:10px 22px;background:var(--blue);color:#fff;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;transition:all .2s;cursor:none;border:none;font-family:'Outfit',sans-serif;}
+.nav-dl:hover{background:#0035CC;transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,71,255,.3);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none;padding:4px;}
+.hamburger span{width:24px;height:2px;background:var(--black);border-radius:2px;transition:all .3s;}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:20px 24px;flex-direction:column;gap:16px;z-index:99;box-shadow:0 8px 24px rgba(0,0,0,.08);}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-size:15px;font-weight:500;color:var(--dark);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);}
+.mobile-menu a:last-child{border-bottom:none;}
+.mobile-menu .mm-dl{margin-top:4px;padding:12px;background:var(--blue);color:#fff;border-radius:8px;text-align:center;font-weight:700;border-bottom:none;}
+
+/* PROGRESS */
+#prog{position:fixed;top:64px;left:0;height:2px;background:var(--blue);z-index:200;transition:width .08s;}
+
+/* LAYOUT */
+.wrap{max-width:1100px;margin:0 auto;padding:0 60px;}
+section{padding:100px 0;}
+.sec-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--blue);letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;}
+.sec-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--black);line-height:1.1;margin-bottom:56px;}
+.sec-title em{color:var(--blue);font-style:italic;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1);}
+.reveal.on{opacity:1;transform:none;}
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}.d4{transition-delay:.32s;}
+
+/* HERO */
+#hero{min-height:100vh;padding-top:64px;display:flex;align-items:center;background:var(--bg);border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;width:100%;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:var(--blue-l);border-radius:100px;font-size:11px;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:28px;}
+.hero-eyebrow::before{content:'';width:6px;height:6px;background:var(--blue);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
+.hero-name{font-family:'DM Serif Display',serif;font-size:clamp(3rem,6vw,5.5rem);line-height:.95;color:var(--black);letter-spacing:-2px;margin-bottom:24px;}
+.hero-name .l2{color:var(--blue);display:block;}
+.hero-desc{font-size:16px;color:var(--mid);line-height:1.8;max-width:440px;margin-bottom:40px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-blue{padding:14px 28px;background:var(--blue);color:#fff;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all .2s;cursor:none;display:inline-flex;align-items:center;gap:8px;border:none;font-family:'Outfit',sans-serif;}
+.btn-blue:hover{background:#0035CC;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,71,255,.3);}
+.btn-out{padding:14px 28px;background:transparent;color:var(--black);border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all .2s;cursor:none;display:inline-flex;align-items:center;gap:8px;font-family:'Outfit',sans-serif;}
+.btn-out:hover{border-color:var(--black);background:var(--black);color:#fff;transform:translateY(-2px);}
+.hero-right{display:flex;flex-direction:column;gap:16px;}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 32px;box-shadow:var(--sh);transition:all .3s;}
+.stat-card:hover{box-shadow:var(--sh2);transform:translateY(-3px);}
+.stat-card.acc{background:var(--blue);border-color:var(--blue);}
+.stat-card.acc .sn{color:#fff;}.stat-card.acc .sl{color:rgba(255,255,255,.7);}
+.sn{font-family:'DM Serif Display',serif;font-size:40px;color:var(--black);line-height:1;}
+.sl{font-size:13px;color:var(--light);margin-top:6px;font-weight:500;}
+.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.hero-badge{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--mid);box-shadow:var(--sh);}
+.hero-badge strong{color:var(--black);display:block;font-size:14px;}
+.hero-deco{position:absolute;right:-200px;top:-200px;width:600px;height:600px;border:1px solid var(--border);border-radius:50%;pointer-events:none;}
+.hero-deco2{position:absolute;right:-100px;top:-100px;width:400px;height:400px;border:1px solid var(--blue-m);border-radius:50%;pointer-events:none;}
+
+/* ABOUT */
+#about{background:var(--bg2);border-bottom:1px solid var(--border);}
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:start;}
+.about-text p{font-size:16px;color:var(--mid);line-height:1.85;margin-bottom:20px;}
+.about-text p strong{color:var(--black);font-weight:700;}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px;}
+.atag{padding:8px 16px;background:var(--tag);border-radius:6px;font-size:12px;font-weight:600;color:var(--dark);letter-spacing:.5px;transition:all .2s;cursor:none;}
+.atag:hover{background:var(--blue);color:#fff;}
+.hl-card{padding:22px 26px;background:var(--bg);border:1px solid var(--border);border-radius:12px;transition:all .3s;margin-bottom:14px;}
+.hl-card:hover{border-color:var(--blue);background:var(--blue-l);transform:translateX(4px);}
+.hl-card h4{font-size:13px;font-weight:700;color:var(--black);margin-bottom:6px;}
+.hl-card p{font-size:13px;color:var(--mid);line-height:1.6;}
+
+/* EXPERIENCE */
+#experience{background:var(--bg);border-bottom:1px solid var(--border);}
+.exp-item{display:grid;grid-template-columns:180px 1fr;gap:40px;padding:36px 0;border-bottom:1px solid var(--border);transition:all .3s;}
+.exp-item:last-child{border-bottom:none;}
+.exp-item:hover .exp-card{background:var(--blue-l);border-color:var(--blue);}
+.exp-year{font-family:'DM Mono',monospace;font-size:11px;color:var(--light);letter-spacing:1px;display:block;margin-bottom:8px;}
+.exp-badge{display:inline-block;padding:4px 10px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.b-now{background:var(--blue-l);color:var(--blue);}.b-done{background:var(--tag);color:var(--light);}
+.exp-card{padding:26px 30px;background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:var(--sh);transition:all .3s;}
+.exp-role{font-size:16px;font-weight:700;color:var(--black);margin-bottom:6px;line-height:1.3;}
+.exp-org{font-size:13px;color:var(--blue);font-weight:600;margin-bottom:12px;}
+.exp-desc{font-size:14px;color:var(--mid);line-height:1.75;}
+
+/* PROJECTS */
+#projects{background:var(--bg2);border-bottom:1px solid var(--border);}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;box-shadow:var(--sh);transition:all .35s;display:flex;flex-direction:column;}
+.proj-card:hover{box-shadow:var(--sh2);transform:translateY(-6px);border-color:var(--blue);}
+.proj-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--blue);letter-spacing:2px;margin-bottom:14px;}
+.proj-icon{width:46px;height:46px;background:var(--blue-l);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:18px;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+.ptag{padding:3px 10px;background:var(--blue-l);color:var(--blue);border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px;}
+.proj-title{font-size:15px;font-weight:700;color:var(--black);margin-bottom:10px;line-height:1.3;}
+.proj-desc{font-size:13px;color:var(--mid);line-height:1.7;flex:1;margin-bottom:18px;}
+.proj-link{font-size:12px;font-weight:700;color:var(--blue);text-decoration:none;letter-spacing:.5px;display:inline-flex;align-items:center;gap:6px;transition:gap .2s;}
+.proj-link:hover{gap:10px;}
+.proj-card.feat{grid-column:span 2;}
+
+/* SKILLS */
+#skills{background:var(--bg);border-bottom:1px solid var(--border);}
+.sk-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;}
+.sb-item{margin-bottom:22px;}
+.sb-top{display:flex;justify-content:space-between;margin-bottom:8px;}
+.sb-name{font-size:14px;font-weight:600;color:var(--dark);}
+.sb-pct{font-family:'DM Mono',monospace;font-size:12px;color:var(--blue);}
+.sb-track{height:5px;background:var(--border);border-radius:3px;overflow:hidden;}
+.sb-fill{height:100%;background:var(--blue);border-radius:3px;width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1);}
+.sg{margin-bottom:28px;}
+.sg-title{font-family:'DM Mono',monospace;font-size:10px;color:var(--light);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
+.sg-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.sg-tag{padding:7px 14px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:500;color:var(--mid);transition:all .2s;cursor:none;}
+.sg-tag:hover{background:var(--blue);color:#fff;border-color:var(--blue);transform:translateY(-2px);}
+
+/* EDUCATION */
+#education{background:var(--bg2);border-bottom:1px solid var(--border);}
+.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.edu-card{padding:26px;background:var(--bg);border:1px solid var(--border);border-radius:16px;transition:all .3s;}
+.edu-card:hover{border-color:var(--blue);transform:translateY(-4px);box-shadow:var(--sh2);}
+.edu-yr{font-family:'DM Mono',monospace;font-size:11px;color:var(--blue);letter-spacing:2px;margin-bottom:10px;}
+.edu-deg{font-size:15px;font-weight:700;color:var(--black);margin-bottom:6px;line-height:1.3;}
+.edu-inst{font-size:13px;color:var(--light);}
+.edu-card.hl{background:var(--blue);border-color:var(--blue);}
+.edu-card.hl .edu-yr,.edu-card.hl .edu-inst{color:rgba(255,255,255,.6);}
+.edu-card.hl .edu-deg{color:#fff;}
+
+/* ACTIVITIES */
+#activities{background:var(--bg);border-bottom:1px solid var(--border);}
+.act-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.act-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;box-shadow:var(--sh);}
+.act-title{font-size:16px;font-weight:700;color:var(--black);margin-bottom:6px;display:flex;align-items:center;gap:10px;}
+.act-sub{font-size:13px;color:var(--light);margin-bottom:24px;}
+
+/* Typing */
+#ty-d{font-family:'DM Mono',monospace;font-size:13px;line-height:2;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:14px;min-height:80px;user-select:none;}
+#ty-i{width:100%;padding:11px 14px;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;font-family:'Outfit',sans-serif;font-size:14px;color:var(--dark);outline:none;transition:border .2s;}
+#ty-i:focus{border-color:var(--blue);background:#fff;}
+.ty-stats{display:flex;gap:24px;margin-top:14px;}
+.ty-stat .tv{font-family:'DM Serif Display',serif;font-size:26px;color:var(--black);}
+.ty-stat .tl{font-size:10px;color:var(--light);letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
+.btn-sm{margin-top:14px;padding:9px 20px;border:1.5px solid var(--border);background:transparent;border-radius:6px;font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;color:var(--dark);cursor:none;transition:all .2s;text-transform:uppercase;}
+.btn-sm:hover{background:var(--blue);color:#fff;border-color:var(--blue);}
+.tc{color:#00B37E;}.tw{color:#E53935;}.tp{color:var(--light);}
+
+/* BOSS GAME */
+.boss-game{position:relative;}
+.boss-card-stack{position:relative;height:280px;margin-bottom:20px;}
+.boss-card{position:absolute;width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:16px;padding:24px;transition:all .4s cubic-bezier(.34,1.56,.64,1);cursor:none;}
+.boss-card.active{transform:translateY(0) scale(1);opacity:1;z-index:3;}
+.boss-card.behind1{transform:translateY(10px) scale(.97);opacity:.6;z-index:2;}
+.boss-card.behind2{transform:translateY(20px) scale(.94);opacity:.3;z-index:1;}
+.boss-card.exit-yes{transform:translateX(120%) rotate(8deg)!important;opacity:0;}
+.boss-card.exit-no{transform:translateX(-120%) rotate(-8deg)!important;opacity:0;}
+.bc-tag{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+.bc-fact{font-size:18px;font-weight:700;color:var(--black);line-height:1.3;margin-bottom:10px;}
+.bc-sub{font-size:13px;color:var(--mid);line-height:1.6;}
+.boss-btns{display:flex;gap:12px;justify-content:center;}
+.boss-btn{padding:12px 28px;border-radius:8px;font-size:14px;font-weight:700;cursor:none;transition:all .2s;border:none;font-family:'Outfit',sans-serif;}
+.bb-no{background:var(--bg);border:1.5px solid var(--border);color:var(--mid);}
+.bb-no:hover{background:#FFF5F5;border-color:#E53935;color:#E53935;}
+.bb-yes{background:var(--blue);color:#fff;}
+.bb-yes:hover{background:#0035CC;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,71,255,.3);}
+.boss-progress{display:flex;gap:6px;justify-content:center;margin-bottom:20px;}
+.bp-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:background .3s;}
+.bp-dot.done{background:var(--blue);}
+.boss-result{text-align:center;padding:20px;display:none;}
+.boss-result h3{font-family:'DM Serif Display',serif;font-size:28px;color:var(--black);margin-bottom:8px;}
+.boss-result p{font-size:14px;color:var(--mid);}
+.boss-meter{height:8px;background:var(--border);border-radius:4px;margin:16px 0;overflow:hidden;}
+.boss-meter-fill{height:100%;background:var(--blue);border-radius:4px;transition:width 1s cubic-bezier(.4,0,.2,1);}
+
+/* Quiz */
+.qz-q{font-size:15px;font-weight:600;color:var(--black);margin-bottom:18px;line-height:1.5;}
+.qz-opts{display:flex;flex-direction:column;gap:8px;}
+.qz-opt{padding:12px 16px;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;font-size:13px;color:var(--mid);cursor:none;transition:all .2s;font-weight:500;}
+.qz-opt:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-l);}
+.qz-opt.correct{border-color:#00B37E;color:#00B37E;background:#F0FBF7;}
+.qz-opt.wrong{border-color:#E53935;color:#E53935;background:#FFF5F5;}
+.qz-fb{font-size:13px;color:var(--mid);margin-top:10px;}
+.qz-sc{font-family:'DM Serif Display',serif;font-size:26px;color:var(--black);text-align:center;margin-top:16px;}
+
+/* CONTACT */
+#contact{background:var(--bg2);}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.ci{display:flex;align-items:center;gap:16px;padding:18px 22px;background:var(--bg);border:1px solid var(--border);border-radius:12px;transition:all .2s;margin-bottom:12px;}
+.ci:hover{border-color:var(--blue);background:var(--blue-l);}
+.ci-icon{width:40px;height:40px;background:var(--blue-l);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+.ci strong{display:block;font-size:13px;font-weight:700;color:var(--black);margin-bottom:2px;}
+.ci span{font-size:13px;color:var(--mid);}
+.cta-box{background:var(--black);border-radius:20px;padding:44px;}
+.cta-box h3{font-family:'DM Serif Display',serif;font-size:1.9rem;color:#fff;margin-bottom:12px;line-height:1.2;}
+.cta-box p{font-size:14px;color:#999;line-height:1.8;margin-bottom:28px;}
+.cta-div{margin:22px 0;border:none;border-top:1px solid #333;}
+.dl-lbl{font-size:11px;color:#666;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;font-family:'DM Mono',monospace;}
+.btn-ghost{padding:12px 22px;border:1.5px solid #444;color:#999;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s;cursor:none;background:transparent;font-family:'Outfit',sans-serif;}
+.btn-ghost:hover{border-color:#fff;color:#fff;}
+
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid #222;padding:32px 60px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.f-brand{font-family:'DM Serif Display',serif;font-size:20px;color:#fff;}
+.f-dot{color:var(--blue);}
+footer p{font-size:12px;color:#555;}
+
+/* ── RESPONSIVE ─────────────────────── */
+@media(max-width:1024px){
+  nav{padding:0 32px;}
+  .wrap{padding:0 32px;}
+  .hero-inner{gap:40px;}
+  .about-grid{gap:40px;}
+}
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .nav-links,.nav-dl{display:none;}
+  .hamburger{display:flex;}
+  .wrap{padding:0 20px;}
+  section{padding:70px 0;}
+  .sec-title{margin-bottom:36px;}
+  .hero-inner{grid-template-columns:1fr;gap:40px;padding:40px 0;}
+  .hero-right{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .stat-card{padding:20px;}
+  .sn{font-size:30px;}
+  .hero-name{font-size:clamp(2.8rem,10vw,4rem);letter-spacing:-1px;}
+  .hero-deco,.hero-deco2{display:none;}
+  .hero-btns{flex-direction:column;gap:10px;}
+  .btn-blue,.btn-out{justify-content:center;}
+  .about-grid{grid-template-columns:1fr;gap:32px;}
+  .exp-item{grid-template-columns:1fr;gap:12px;}
+  .exp-period{display:flex;align-items:center;gap:12px;}
+  .proj-grid{grid-template-columns:1fr;}
+  .proj-card.feat{grid-column:auto;}
+  .sk-wrap{grid-template-columns:1fr;gap:40px;}
+  .edu-grid{grid-template-columns:1fr 1fr;}
+  .act-grid{grid-template-columns:1fr;}
+  .contact-wrap{grid-template-columns:1fr;gap:36px;}
+  footer{flex-direction:column;text-align:center;padding:24px 20px;}
+  .stat-row{grid-template-columns:1fr 1fr;}
+  .hero-badge{padding:12px 14px;font-size:12px;}
+}
+@media(max-width:480px){
+  .hero-right{grid-template-columns:1fr;}
+  .edu-grid{grid-template-columns:1fr;}
+  .stat-row{grid-template-columns:1fr;}
+  .hero-btns .btn-blue,.hero-btns .btn-out{width:100%;justify-content:center;}
+  .ty-stats{gap:16px;}
+  .boss-btns{gap:8px;}
+  .boss-btn{padding:10px 18px;font-size:13px;}
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div><div id="cur-r"></div>
+<div id="prog"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Shubham Kumar<sup>PORTFOLIO</sup></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#activities">Activities</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-dl" id="navDl">Download CV ↓</button>
+  <button class="hamburger" id="ham" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mmenu">
+  <a href="#about" class="mm-link">About</a>
+  <a href="#experience" class="mm-link">Experience</a>
+  <a href="#projects" class="mm-link">Projects</a>
+  <a href="#skills" class="mm-link">Skills</a>
+  <a href="#activities" class="mm-link">Activities</a>
+  <a href="#contact" class="mm-link">Contact</a>
+  <button class="mm-dl mm-link btn-blue" id="mmDl" style="border:none;text-align:center;">⬇ Download Resume</button>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-deco"></div><div class="hero-deco2"></div>
+  <div class="wrap" style="width:100%">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">Available for opportunities</div>
+        <h1 class="hero-name">Shubham<span class="l2">Kumar</span></h1>
+        <p class="hero-desc">AI Application Developer & Research Associate at <strong>AIIMS New Delhi</strong>. Building intelligent tools for mental health, productivity, and speech analysis.</p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn-blue" id="viewWorkBtn">View My Work →</a>
+          <button class="btn-out" id="heroDlBtn">⬇ Download Resume</button>
+          <a href="mailto:dhiryansd999@gmail.com?subject=Opportunity%20for%20Shubham%20Kumar&body=Hi%20Shubham%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect." class="btn-out">Get In Touch</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="stat-card acc"><div class="sn" id="c1">0</div><div class="sl">AI Applications Built on Google AI Studio</div></div>
+        <div class="stat-row">
+          <div class="stat-card"><div class="sn" id="c2">0</div><div class="sl">Years of Experience</div></div>
+          <div class="stat-card"><div class="sn" id="c3">0</div><div class="sl">AIIMS Research Projects</div></div>
+        </div>
+        <div class="hero-badge"><span style="font-size:22px">🏥</span><div><strong>Currently at AIIMS New Delhi</strong>Speech Markers for Depression Detection · Prof. Dr. Nand Kumar</div></div>
+        <div class="hero-badge"><span style="font-size:22px">🎓</span><div><strong>MCA + B.Sc. Computer Science</strong>AI Developer · Graphic Designer · 3D & Motion Design</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about"><div class="wrap">
+  <div class="reveal"><p class="sec-label">// Who I Am</p><h2 class="sec-title">About <em>Me</em></h2></div>
+  <div class="about-grid">
+    <div class="reveal">
+      <div class="about-text">
+        <p>I'm <strong>Shubham Kumar</strong>, a multidisciplinary tech professional based in Delhi, India — blending data expertise, creative design, and AI development into everything I build.</p>
+        <p>Currently contributing to landmark <strong>mental health research at AIIMS New Delhi</strong> under Prof. (Dr.) Nand Kumar. My work on <strong>Speech Markers to Detect Depression</strong> applies acoustic AI analysis — MFCC, pitch, amplitude — to build tools that could change millions of lives.</p>
+        <p>Beyond research, I'm a <strong>vibe coder</strong> — I've shipped 6 real-world AI applications. I combine <strong>3D design, animation, and creative thinking</strong> with deep technical ability to make products that feel as good as they work.</p>
+      </div>
+      <div class="about-tags">
+        <span class="atag">#AI_Developer</span><span class="atag">#Research_Associate</span>
+        <span class="atag">#Graphic_Designer</span><span class="atag">#3D_Design</span>
+        <span class="atag">#Animation</span><span class="atag">#Vibe_Coding</span>
+        <span class="atag">#Mental_Health_AI</span><span class="atag">#Creative_Thinking</span>
+      </div>
+    </div>
+    <div class="reveal d2">
+      <div class="hl-card"><h4>🧠 Mental Health AI</h4><p>Working on speech-based depression detection using MFCC, pitch & amplitude analysis at AIIMS New Delhi.</p></div>
+      <div class="hl-card"><h4>🎨 Creative Design</h4><p>Proficient in Adobe Creative Cloud, 3D design, animation, and motion design.</p></div>
+      <div class="hl-card"><h4>⚡ AI App Builder</h4><p>Built 6 deployed AI applications on Google AI Studio spanning healthcare, productivity & audio analysis.</p></div>
+      <div class="hl-card"><h4>📊 Data Management</h4><p>4+ years combined experience in data management, health records, and research documentation.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- EXPERIENCE -->
+<section id="experience"><div class="wrap">
+  <div class="reveal"><p class="sec-label">// Career Path</p><h2 class="sec-title">Work <em>Experience</em></h2></div>
+  <div class="exp-item reveal">
+    <div class="exp-period"><span class="exp-year">2024 – PRESENT</span><span class="exp-badge b-now">● Current</span></div>
+    <div class="exp-card"><div class="exp-role">Research Project Associate — Speech Markers for Depression Detection</div><div class="exp-org">🏥 AIIMS New Delhi · Under Prof. (Dr.) Nand Kumar</div><p class="exp-desc">Working on an AI-driven research project using acoustic features — MFCC, pitch, amplitude and voice quality — to build ML models for early detection of depression in community populations. Directly aligned with real clinical impact in mental health diagnostics.</p></div>
+  </div>
+  <div class="exp-item reveal d1">
+    <div class="exp-period"><span class="exp-year">2023 – 2024</span><span class="exp-badge b-done">Completed</span></div>
+    <div class="exp-card"><div class="exp-role">Research Project Associate — CARE Neuromodulation in Mental Health</div><div class="exp-org">🏥 AIIMS New Delhi · Under Prof. (Dr.) Nand Kumar</div><p class="exp-desc">Contributed to CARE Neuromodulation in Mental Health — a comprehensive study on TMS & tDCS therapies for mental health disorders. Assisted in data management, patient records, and research documentation.</p></div>
+  </div>
+  <div class="exp-item reveal d2">
+    <div class="exp-period"><span class="exp-year">1 YEAR</span><span class="exp-badge b-done">Completed</span></div>
+    <div class="exp-card"><div class="exp-role">CDEO – Data Entry Officer</div><div class="exp-org">💉 North Delhi DGD Vaccination Department</div><p class="exp-desc">Managed vaccination data records, entry, and reporting for the district's immunization program. Ensured data accuracy, timely updates and digital record maintenance across multiple healthcare centers.</p></div>
+  </div>
+  <div class="exp-item reveal d3">
+    <div class="exp-period"><span class="exp-year">3 MONTHS</span><span class="exp-badge b-done">Completed</span></div>
+    <div class="exp-card"><div class="exp-role">Graphic Designer</div><div class="exp-org">🎨 MIA Delhi</div><p class="exp-desc">Created visual identities, marketing collaterals, social media creatives and branding materials for clients using Adobe Creative Cloud.</p></div>
+  </div>
+</div></section>
+
+<!-- PROJECTS -->
+<section id="projects"><div class="wrap">
+  <div class="reveal"><p class="sec-label">// What I've Built</p><h2 class="sec-title">AI <em>Applications</em></h2></div>
+  <div class="proj-grid">
+    <div class="proj-card feat reveal">
+      <div class="proj-num">01 — FEATURED</div>
+      <div class="proj-icon">🎵</div>
+      <div class="proj-tags"><span class="ptag">AI</span><span class="ptag">Mental Health</span><span class="ptag">Voice Analysis</span></div>
+      <div class="proj-title">VocalMind: Depression & Stress Analyzer</div>
+      <p class="proj-desc">Advanced voice analysis tool extracting acoustic features (MFCC, pitch, amplitude) to detect signs of depression and stress. Directly extends the research at AIIMS New Delhi.</p>
+      <a href="https://ai.studio/apps/c7776c81-c60b-4325-b712-234da5cbdccd?fullscreenApplet=true" target="_blank" class="proj-link">Launch Application →</a>
+    </div>
+    <div class="proj-card reveal d1">
+      <div class="proj-num">02</div>
+      <div class="proj-icon">🎨</div>
+      <div class="proj-tags"><span class="ptag">AI</span><span class="ptag">Image</span></div>
+      <div class="proj-title">Whisk AI Shot Prompt Generator</div>
+      <p class="proj-desc">AI-powered shot prompt generator built on Google AI Studio using Whisk for creative visual prompting and image generation workflows.</p>
+      <a href="https://ai.studio/apps/96460eca-df0a-4d88-95f0-b9d6c9415312?fullscreenApplet=true" target="_blank" class="proj-link">Launch →</a>
+    </div>
+    <div class="proj-card reveal d1">
+      <div class="proj-num">03</div>
+      <div class="proj-icon">🧠</div>
+      <div class="proj-tags"><span class="ptag">AI</span><span class="ptag">Medical</span></div>
+      <div class="proj-title">AIIMS CRE Daily Prep</div>
+      <p class="proj-desc">AI-powered study companion for AIIMS Common Recruitment Examination (Group B & C) with personalized schedules and adaptive practice.</p>
+      <a href="https://ai.studio/apps/d28c88ab-c09d-40f9-80f0-6383ca33f2da?fullscreenApplet=true" target="_blank" class="proj-link">Launch →</a>
+    </div>
+    <div class="proj-card reveal d2">
+      <div class="proj-num">04</div>
+      <div class="proj-icon">📄</div>
+      <div class="proj-tags"><span class="ptag">AI</span><span class="ptag">Productivity</span></div>
+      <div class="proj-title">SmartScan Form Filler</div>
+      <p class="proj-desc">AI document scanner that intelligently auto-names documents and prepares them for Google Form submission — eliminating manual effort.</p>
+      <a href="https://ai.studio/apps/f76f9e7e-6735-4ce2-bbd9-f7119c66c75d?fullscreenApplet=true" target="_blank" class="proj-link">Launch →</a>
+    </div>
+    <div class="proj-card reveal d2">
+      <div class="proj-num">05</div>
+      <div class="proj-icon">🎙️</div>
+      <div class="proj-tags"><span class="ptag">AI</span><span class="ptag">Audio</span><span class="ptag">Research</span></div>
+      <div class="proj-title">ELAN Audio Segmenter</div>
+      <p class="proj-desc">Upload audio and automatically segment into INTERVIEWER, PATIENT, NOISE and FILLER tiers for ELAN linguistic annotation.</p>
+      <a href="https://ai.studio/apps/bcc4139a-747f-449e-ac94-ca832621c893?fullscreenApplet=true" target="_blank" class="proj-link">Launch →</a>
+    </div>
+    <div class="proj-card reveal d3" style="border-style:dashed;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:200px;">
+      <div style="font-size:32px;margin-bottom:12px">✦</div>
+      <div class="proj-title" style="color:var(--light)">More Coming Soon</div>
+      <p class="proj-desc" style="font-size:12px">Next-gen AI tools in mental health, audio analysis & healthcare automation.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- SKILLS -->
+<section id="skills"><div class="wrap">
+  <div class="reveal"><p class="sec-label">// Technical Stack</p><h2 class="sec-title">Skills &amp; <em>Expertise</em></h2></div>
+  <div class="sk-wrap">
+    <div class="reveal" id="sbWrap">
+      <div class="sb-item"><div class="sb-top"><span class="sb-name">AI Model Development</span><span class="sb-pct">88%</span></div><div class="sb-track"><div class="sb-fill" data-w="88"></div></div></div>
+      <div class="sb-item"><div class="sb-top"><span class="sb-name">Adobe Creative Cloud</span><span class="sb-pct">90%</span></div><div class="sb-track"><div class="sb-fill" data-w="90"></div></div></div>
+      <div class="sb-item"><div class="sb-top"><span class="sb-name">Microsoft Office Suite</span><span class="sb-pct">92%</span></div><div class="sb-track"><div class="sb-fill" data-w="92"></div></div></div>
+      <div class="sb-item"><div class="sb-top"><span class="sb-name">3D Design & Animation</span><span class="sb-pct">75%</span></div><div class="sb-track"><div class="sb-fill" data-w="75"></div></div></div>
+      <div class="sb-item"><div class="sb-top"><span class="sb-name">Vibe Coding & Prompt Engineering</span><span class="sb-pct">95%</span></div><div class="sb-track"><div class="sb-fill" data-w="95"></div></div></div>
+      <div class="sb-item"><div class="sb-top"><span class="sb-name">Data Management & Typing (55+ WPM)</span><span class="sb-pct">93%</span></div><div class="sb-track"><div class="sb-fill" data-w="93"></div></div></div>
+    </div>
+    <div class="reveal d2">
+      <div class="sg"><div class="sg-title">AI & Technology</div><div class="sg-tags"><span class="sg-tag">AI Models</span><span class="sg-tag">Vibe Coding</span><span class="sg-tag">Google AI Studio</span><span class="sg-tag">Speech Analysis</span><span class="sg-tag">MFCC</span><span class="sg-tag">Prompt Engineering</span></div></div>
+      <div class="sg"><div class="sg-title">Design & Creative</div><div class="sg-tags"><span class="sg-tag">Adobe Creative Cloud</span><span class="sg-tag">3D Design</span><span class="sg-tag">Animation</span><span class="sg-tag">Motion Design</span><span class="sg-tag">Creative Thinking</span></div></div>
+      <div class="sg"><div class="sg-title">Professional</div><div class="sg-tags"><span class="sg-tag">Microsoft Office</span><span class="sg-tag">Data Entry</span><span class="sg-tag">Typing 55+ WPM</span><span class="sg-tag">Multitasking</span><span class="sg-tag">Detail-Oriented</span></div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- EDUCATION -->
+<section id="education"><div class="wrap">
+  <div class="reveal"><p class="sec-label">// Academic Journey</p><h2 class="sec-title">Education &amp; <em>Qualifications</em></h2></div>
+  <div class="edu-grid">
+    <div class="edu-card hl reveal"><div class="edu-yr">2022 – 2024</div><div class="edu-deg">MCA – Master of Computer Applications</div><div class="edu-inst">Completed ✓</div></div>
+    <div class="edu-card reveal d1"><div class="edu-yr">2019 – 2022</div><div class="edu-deg">B.Sc. Degree</div><div class="edu-inst">CCSU Meerut</div></div>
+    <div class="edu-card reveal d2"><div class="edu-yr">2018</div><div class="edu-deg">Intermediate (12th)</div><div class="edu-inst">UP Board</div></div>
+    <div class="edu-card reveal d1"><div class="edu-yr">2016</div><div class="edu-deg">High School (10th)</div><div class="edu-inst">UP Board</div></div>
+    <div class="edu-card reveal d2"><div class="edu-yr">ADDITIONAL</div><div class="edu-deg">DCA – Diploma in Computer Applications</div><div class="edu-inst">AISECT Computer Center</div></div>
+    <div class="edu-card reveal d3"><div class="edu-yr">ADDITIONAL</div><div class="edu-deg">CCC – Course on Computer Concepts</div><div class="edu-inst">NIELIT Delhi</div></div>
+  </div>
+</div></section>
+
+<!-- ACTIVITIES -->
+<section id="activities"><div class="wrap">
+  <div class="reveal"><p class="sec-label">// Interactive Zone</p><h2 class="sec-title">Try These <em>Activities</em></h2></div>
+  <div class="act-grid">
+
+    <!-- BOSS GAME -->
+    <div class="act-card reveal boss-game">
+      <div class="act-title">👔 Would You Hire Me?</div>
+      <p class="act-sub">You're the Boss. Swipe through Shubham's achievements and decide!</p>
+      <div class="boss-progress" id="bprog"></div>
+      <div class="boss-card-stack" id="bstack"></div>
+      <div class="boss-result" id="bresult">
+        <h3 id="br-title"></h3>
+        <div class="boss-meter"><div class="boss-meter-fill" id="bmfill"></div></div>
+        <p id="br-sub"></p>
+        <button class="btn-sm" id="bRestart" style="margin-top:16px">↺ Play Again</button>
+      </div>
+      <div class="boss-btns" id="bbtns">
+        <button class="boss-btn bb-no" id="bNo">✗ Pass</button>
+        <button class="boss-btn bb-yes" id="bYes">✓ Impressive!</button>
+      </div>
+    </div>
+
+    <!-- TYPING TEST -->
+    <div class="act-card reveal d2">
+      <div class="act-title">⌨️ Typing Speed Test</div>
+      <p class="act-sub">Shubham types at 55+ WPM. Can you beat that?</p>
+      <div id="ty-d"></div>
+      <input type="text" id="ty-i" placeholder="Start typing to begin..." autocomplete="off" spellcheck="false">
+      <div class="ty-stats">
+        <div class="ty-stat"><div class="tv" id="wv">0</div><div class="tl">WPM</div></div>
+        <div class="ty-stat"><div class="tv" id="av">100</div><div class="tl">Accuracy %</div></div>
+        <div class="ty-stat"><div class="tv" id="tv2">30</div><div class="tl">Seconds</div></div>
+      </div>
+      <button class="btn-sm" id="tyR">↺ Reset</button>
+    </div>
+
+  </div>
+</div></section>
+
+<!-- CONTACT -->
+<section id="contact"><div class="wrap">
+  <div class="reveal"><p class="sec-label">// Say Hello</p><h2 class="sec-title">Let's <em>Connect</em></h2></div>
+  <div class="contact-wrap">
+    <div class="reveal">
+      <div class="ci"><div class="ci-icon">📧</div><div><strong>Email</strong><span>dhiryansd999@gmail.com</span></div></div>
+      <div class="ci"><div class="ci-icon">📞</div><div><strong>Phone</strong><span>+91 8533053912</span></div></div>
+      <div class="ci"><div class="ci-icon">📍</div><div><strong>Location</strong><span>Delhi, India – 110093</span></div></div>
+      <div class="ci"><div class="ci-icon">🏥</div><div><strong>Current Role</strong><span>Research Associate, AIIMS New Delhi</span></div></div>
+      <div class="ci"><div class="ci-icon">🎓</div><div><strong>Education</strong><span>MCA + B.Sc. Computer Science</span></div></div>
+    </div>
+    <div class="cta-box reveal d2">
+      <h3>Open to Work & Collaborations</h3>
+      <p>Whether you need an AI developer, creative designer, or research collaborator — I'm available for exciting opportunities, freelance projects, and full-time roles.</p>
+      <a href="mailto:dhiryansd999@gmail.com?subject=Opportunity%20for%20Shubham%20Kumar&body=Hi%20Shubham%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect." class="btn-blue" style="width:fit-content">📩 Send an Email</a>
+      <hr class="cta-div">
+      <div class="dl-lbl">Download Resume</div>
+      <button class="btn-ghost" id="ctaDlBtn">⬇ Shubham_Kumar_Resume.pdf</button>
+    </div>
+  </div>
+</div></section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-brand">Shubham Kumar<span class="f-dot">.</span></div>
+  <p>Research Associate @ AIIMS · AI Developer · Graphic Designer · Delhi, India</p>
+  <p style="font-size:11px;font-family:'DM Mono',monospace;color:#444">© 2025 All Rights Reserved</p>
+</footer>
+
+<script>
+// ── PDF BASE64 (embedded for guaranteed download) ──
+const PDF_B64 = "JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgKG9wZW5zb3VyY2UpCjEgMCBvYmoKPDwKL0YxIDIgMCBSIC9GMiAzIDAgUgo+PgplbmRvYmoKMiAwIG9iago8PAovQmFzZUZvbnQgL0hlbHZldGljYSAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyAvTmFtZSAvRjEgL1N1YnR5cGUgL1R5cGUxIC9UeXBlIC9Gb250Cj4+CmVuZG9iagozIDAgb2JqCjw8Ci9CYXNlRm9udCAvSGVsdmV0aWNhLUJvbGQgL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcgL05hbWUgL0YyIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKNCAwIG9iago8PAovQ29udGVudHMgOSAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCA4IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago1IDAgb2JqCjw8Ci9Db250ZW50cyAxMCAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCA4IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago2IDAgb2JqCjw8Ci9QYWdlTW9kZSAvVXNlTm9uZSAvUGFnZXMgOCAwIFIgL1R5cGUgL0NhdGFsb2cKPj4KZW5kb2JqCjcgMCBvYmoKPDwKL0F1dGhvciAoXChhbm9ueW1vdXNcKSkgL0NyZWF0aW9uRGF0ZSAoRDoyMDI2MDUyODA5MDIzNCswMCcwMCcpIC9DcmVhdG9yIChcKHVuc3BlY2lmaWVkXCkpIC9LZXl3b3JkcyAoKSAvTW9kRGF0ZSAoRDoyMDI2MDUyODA5MDIzNCswMCcwMCcpIC9Qcm9kdWNlciAoUmVwb3J0TGFiIFBERiBMaWJyYXJ5IC0gXChvcGVuc291cmNlXCkpIAogIC9TdWJqZWN0IChcKHVuc3BlY2lmaWVkXCkpIC9UaXRsZSAoXChhbm9ueW1vdXNcKSkgL1RyYXBwZWQgL0ZhbHNlCj4+CmVuZG9iago4IDAgb2JqCjw8Ci9Db3VudCAyIC9LaWRzIFsgNCAwIFIgNSAwIFIgXSAvVHlwZSAvUGFnZXMKPj4KZW5kb2JqCjkgMCBvYmoKPDwKL0ZpbHRlciBbIC9BU0NJSTg1RGVjb2RlIC9GbGF0ZURlY29kZSBdIC9MZW5ndGggMjg5MAo+PgpzdHJlYW0KR2IhI14+QmNRLSZxOVNZVzJFZDItPUZFU0NSdF9UKiw/Yj9OZmZPXUY3UmFzT01oOVFROmw4Ml5PRTRMPTUxZWk3IT9WViUyKylnbE1CZUhXYnJFcW4zdVhCQEw3ITZLbzdHX0tZaGc4NnMiTXVOa2g5WXJWTVBUPjhpZy07LmBfMVImM2JVXCQtcjxmJzo8T3IrbjBAPGZdTTxvZiVGWjRnNipfY0hgWlEmc3QjOD9YLUkkW2Q6LzNiYjt0JkcwVDJoKmFJVDA/RyM1VjBgO1ltcUNBKGNcMCY+LG9pbGchO2d1WzpESF5jZlBuNGw8LDsyYG9sWi47PE0vIVRraVdtcEQjXSMpOmQpYSloVDRfNFM5PVRmTDgiTEtpaiNGZyJRVFMjQk9ZKyY6MHJkIi9CbU1UJ3EvNmBRQmVaRCViVFYpXzhnK0JzWlErJkJDXy5uTihxcmddVTxLKGdZZFo7W19qR0AoQCFlWDZnTDhwc0UjY1k9cUA3WW9idD9vdTlKbTktWGpxVCc1IUUsQlNSJSh0P3JyVXNbYSZqTmYlL1ldMjdbQ0lgaWQuMEVlJkxgM3VXRzVGRWZUbUpjRWg2aDslak5XLz48KlNLSVhwU1RiTlwmRFZMdEdPISo3ZCJsIW0rOEVcQXJQV1Y1akEmSXBmVFZON0dQcT91OVhQZ1JUM2ghQ1Q7RDJkOUAuT007SkoiOFA8ZEpRXVAxPHBtJ0kyMl1aaWM+RSNSKkglcmBnV3BXYzpCRF9EKFpeJDUkTXMxMXJQWmg+X19MWU5PRDF0QzZHX05xWzsyMGRIZjxEcGhGPl9tV2lgJHMiU1RvP25rPGQ/VF1NQl4+RFQibV0rK2ZzKlA9b2xNKD5FaVshQVgmTCErY2hNOmtAM3JzR1QpMVQsQDhDSSwmQzJybzJHbXNiJl9CYzRHKFomMTYzTlc7Tj1YZStNNzVVVVtAayRpXnBdNSVMOVkiLVdsJ1AlQU9uXDsoTkhyUy5CWjViOFpoaT1bLGtZVCJnIUo9b01EMlN1IzhiLCxrV21yJilWKVF0ODlNWylzPjFuLmxgaWpddGtvTFRMdGlBNXVMSDY3T3VfNzRSWVMxUUFTI21rKFgjWklYJlFNYzxfY29dOyhkYERmQVY0JlskMWolaSRAU3FdSzBUQkxHY0opWVQ5U21hRyozSiNGcC9WbW8yXi8obyZLdFo2ViImXFA4Zyg8JjZhQCs3cTg5MUAsNiJCWlpUJXNXNV0rNmZDRHExKFQ5WFQiWENeJWd0O1pBcUVFOHNSQWc2SEZBKU0qSEBXbXReRkZBIktrMnNib0JPZSVlQl9FRGAxM29MdG08TlY6SVZIWjlnNzNhOWZGNyxfZGVQdDhiOiolLUNsWyc3ZVYnMDxVZEVxJ0lxbW8tQGJgUEBtOE9CaFVDSWEpXEs2SGBaYVlBZE1uJTQlPStxWkRuPD5xM2JZZl4hSF9CZz1eL0kuTXU0S0lUUHBtL2xDNjtIUl9AaEJNN1xXJytgYmViYlczXUs9V0cwZl5ZTDdUVSwlVXUtUzFYcC1QJD9DOi8yKGNeZzl1ZktHOkU3b2xOST0kIk5McmImZmZALz9XdCVtVkZRaVkpUzQlU3ApNy1CLWtcV05DRDFaRjg4cG1PNGxyUGc2Uz9FdVg7PXInLUY8IlBNIiMlSC9Lc1s2PDNWSF1kQ0dbaSNdXT9bMSVVZ11hM1wmYGs4TDx0QVEvc2MvRzxpZlkzXCgjViwyTzo2Mlt0S0dXIyw2PTtOR2NRUyJVcTUpc1VyVj5FMj1IKlQ3XCw9MSNsIUVxbzlMITosQWY1VDtvZmkhRVMnWW0wW1RyO10kJCtZXXJJUmZLdFhIK0ReZzZWJExCWmkvRDg8OS5yJHBNRVxHTSpKcUdhUlpRI21NO1A+XFxMbVkmVypcI2piRTpmUT86VjVfTCp0MmI6KUpPVWg1YSU3PWQjdG9FYU5lLUBsam5PJEtAaSkjaC10UTVvJF9zKVpRJDd0NGZQNVRBNUtua1RFPT9DQiVyNVwyVz0vbS9sTVcjZShpISouOSluRm4jVGw/TU02UUQqXSNfTktAZFtaZitLPz5iRis+Wj9OXzMoMWorYUdQZWtcbkolQydUalw0WEBUPF5kP0hTNCJBUStCXyRZTm5sUC9bR2AhcyYuI2VXazhqPFtxREcoOl5BJUZ0SDcsbSNsKmElRiNbVWtjcDghMTNHdGRCbk88cUw3aTFIckhcWC8zMk9lSFJCXy9pVVw2R148NGtUPUNlNjphaWRaam1pdW9tPz1vMldDYSFzM3AlcSpuWixlSz48VW9NOksjX1ZXPV5tbixuQz1QS0Uobyo7LC9LT2BWSyMkOEQtTSI9UkFOKStUZF50UChpNmtmRidST1JYZmcuJlYoLWw4IkFkJFcpU1hyWkA9RWQjUGtYK1liaystSThVOmNmWjpuWz83QDtlXVUsLU80JWkxaUdBVTtFLG5JUSQ+RzBsYE5CNGUkRFgqdFNjZGZHTW43cC5nUjovTmRCW11qV0pURXJkSydqWzpoTVFOUmw5ZERnOik0VCQ4Rz5NMydjYV5PbiFLcCtvI2JKbjVRN3EySDo2TygiM08/cXQnM1VILD4wS2ZiJlEuWksrYHJzOjc+TjBeO2NsS287Yzo0bDtdNy5cLEJqM2wnRz8iMl45IisjLjd1YzBUYkhSLWBSOmxWVT9iUk1FOmNwcEUxOV5nJm4qbCdNaXVlQ2g6YXNMJnU8Ml8uZkJYWDpZRWMrZ2MsL2RcY08zPGM6YUk/SyZnTWtScjFRKEhaIkl1Z04uUm5DbXB0VFxiREktQlAjN3NpI3RCZm8lbVlcOyhlOnVdO19eaFVCR0IoRyJBJzBaXnRZKVYmQlVTM0hVaV9kPF4qbFxBcG9wYixfaUQhL28tR0ppQ080LysiMEcmI2NnaUVcNUg0L1IybS07cW5dImAnLEIjNiRlXlMzaEB1SSY7cik0Pi9XK1VMciMlYVo3c1VBLT9QI29tbkoiXm5USW4lWjNcRDVYLl0xITdZSm4xKnQ+LU9VbmNHaDwwUVA8NnJzZ10kcUkpTm9pW2chWyFYO1tJPTp0SzRFKTpgPXRRNS9sWip0cy5QQExKIm1GNSIwUE1OTVNOQVtzcD86Ti9sJj9KaSE+IWsoNDRDSDpwYU1OMFRATipQXk1HWiw1Rm9oREVtV1lENyhYaWRRVEo9YTJIWjw3LiM9QTQ5N0N0RUkjJUkxTz5xWW5hXTRIIm9VKzhMYGMoQUJHMixDYF4+Ky5zIW4wVC5mIjkyN29ARz90LHFtIUhBO28oSFFuV21lKjNUPDBKc2BRXT4zMHFuaFpZcVBHNkEidGw0L2tvY0pCLm9Xb0tXQVlPQDlMV3I/J1k3SGQ1K19nUihkL2lQUWM7OEBpPFVOYGdxJzclI1prZVlhaCFSZVAqJk0sVXJZTDVDVUFWNj83VldxT25nOEVYLFIyJyxoRjthOSdVMFZWajtcUiYocUdeWlRqSSlFPEAtSDRMLEI5JlooIkFHVT1MajJhaFNIZE1GLlREb1FtWURAY0dsWUMuUU9MKFBwXlNJZllPNERDMEgpblVuLS5mP2ohYCg2XEoxSTZROzkmWEdTWFVnNjc5Yy5KZFp1Ky9wRSw1Mik0JyxHKjEyNSooYCZcVD8mX147Ji8rXUdbcCVbdF8lcVptNWlrOUdgbCVHXl5pXGo9Rys7ajwpXUlhLmBiakwkRyY2OE0uUm5HWi04Pic5aW4xbTouIzlHTmhOJ0Q5JUFuSyVbPidfaUFQTGJISSdHKF4uOXE6YTx0ckEoKFwuclg3ZnVtWTp+PmVuZHN0cmVhbQplbmRvYmoKMTAgMCBvYmoKPDwKL0ZpbHRlciBbIC9BU0NJSTg1RGVjb2RlIC9GbGF0ZURlY29kZSBdIC9MZW5ndGggMzQ3Cj4+CnN0cmVhbQpHYXJWSmdKNVg/JSI3U0dTNEQ0IVcwP0I7XDROPjpbS2RyUEo5RlNwNXFlcl9UYCUja0A3KHNTOyZoVTphJClDKUFZXGQlZj4mcnFrKU1cPlRgZXBONldpOCksXT0iZitMTXJgPCg9X2MvU3BrWWNKcmhPbjlxbGJfQmE2Yzw9Jjk9Qm5bVSJlJW1cVkZjVGhwQFdCPTVZLGYzbmtdXzw1XVcvMlNiLW5BQkljIScpTXRTQilJbURvKTFTZVNdNmtLcW1nKE8malk+K21zYFFeO3VDUDNMV2FqQkUiZ09DNF8vKk9IUDkkJiRoVj5oY2o3PyVwKnIkWGY/IT5iL2U/ZDdgXixwJCsxbC1pKERpTjpVdExbYDskQyJbOU5XLkRUIVJDMVg1PiZFMVEnJGJiLVNqNTstO0sxOSJNS2EiQDQyaUduXVRSPUdPXGozYjtcInNEaTdodUV+PmVuZHN0cmVhbQplbmRvYmoKeHJlZgowIDExCjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDA2MSAwMDAwMCBuIAowMDAwMDAwMTAyIDAwMDAwIG4gCjAwMDAwMDAyMDkgMDAwMDAgbiAKMDAwMDAwMDMyMSAwMDAwMCBuIAowMDAwMDAwNTI0IDAwMDAwIG4gCjAwMDAwMDA3MjggMDAwMDAgbiAKMDAwMDAwMDc5NiAwMDAwMCBuIAowMDAwMDAxMDc2IDAwMDAwIG4gCjAwMDAwMDExNDEgMDAwMDAgbiAKMDAwMDAwNDEyMiAwMDAwMCBuIAp0cmFpbGVyCjw8Ci9JRCAKWzxiMWFkNzU3YjQxMTI1MWVhZWI1MjQwNDdkNzI2ZWI5ND48YjFhZDc1N2I0MTEyNTFlYWViNTI0MDQ3ZDcyNmViOTQ+XQolIFJlcG9ydExhYiBnZW5lcmF0ZWQgUERGIGRvY3VtZW50IC0tIGRpZ2VzdCAob3BlbnNvdXJjZSkKCi9JbmZvIDcgMCBSCi9Sb290IDYgMCBSCi9TaXplIDExCj4+CnN0YXJ0eHJlZgo0NTYwCiUlRU9GCg==";
+
+function downloadPDF() {
+  try {
+    const bin = atob(PDF_B64);
+    const arr = new Uint8Array(bin.length);
+    for(let i=0;i<bin.length;i++) arr[i]=bin.charCodeAt(i);
+    const blob = new Blob([arr],{type:'application/pdf'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href=url; a.download='Shubham_Kumar_Resume.pdf'; a.click();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+  } catch(e) {
+    window.open('Shubham_Kumar_Resume.pdf','_blank');
+  }
+}
+document.getElementById('navDl').addEventListener('click', downloadPDF);
+document.getElementById('heroDlBtn').addEventListener('click', downloadPDF);
+document.getElementById('ctaDlBtn').addEventListener('click', downloadPDF);
+const mmDl = document.getElementById('mmDl');
+if(mmDl) mmDl.addEventListener('click', downloadPDF);
+
+// ── SMOOTH SCROLL for View My Work ──
+document.getElementById('viewWorkBtn').addEventListener('click', function(e){
+  e.preventDefault();
+  document.getElementById('projects').scrollIntoView({behavior:'smooth'});
+});
+
+// ── HAMBURGER ──
+const ham = document.getElementById('ham');
+const mm = document.getElementById('mmenu');
+ham.addEventListener('click',()=>{ mm.classList.toggle('open'); });
+document.querySelectorAll('.mm-link').forEach(a=>{
+  a.addEventListener('click',()=>mm.classList.remove('open'));
+});
+
+// ── FAST CURSOR (RAF lerp) ──
+const cur=document.getElementById('cur'), curR=document.getElementById('cur-r');
+let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+document.addEventListener('mousedown',()=>document.body.classList.add('cur-big'));
+document.addEventListener('mouseup',()=>document.body.classList.remove('cur-big'));
+document.querySelectorAll('a,button,.proj-card,.hl-card,.ci,.qz-opt,.boss-btn,.sg-tag,.atag,.edu-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('cur-big'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('cur-big'));
+});
+(function raf(){
+  cur.style.left=mx+'px'; cur.style.top=my+'px';
+  rx+=(mx-rx)*.2; ry+=(my-ry)*.2;
+  curR.style.left=rx+'px'; curR.style.top=ry+'px';
+  requestAnimationFrame(raf);
+})();
+
+// ── SCROLL PROGRESS ──
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{
+  prog.style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%';
+},{passive:true});
+
+// ── REVEAL ──
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ── SKILL BARS ──
+const sbObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.querySelectorAll('.sb-fill').forEach(b=>b.style.width=b.dataset.w+'%');
+  });
+},{threshold:.3});
+const sbW=document.getElementById('sbWrap'); if(sbW) sbObs.observe(sbW);
+
+// ── COUNT UP ──
+function cUp(id,target,sfx='',dur=1800){
+  const el=document.getElementById(id); if(!el) return;
+  const t0=performance.now();
+  (function s(now){
+    const p=Math.min((now-t0)/dur,1),e=1-Math.pow(1-p,3);
+    el.textContent=Math.floor(e*target)+sfx;
+    if(p<1) requestAnimationFrame(s);
+  })(t0);
+}
+setTimeout(()=>{cUp('c1',6);cUp('c2',4,'+');cUp('c3',2);},800);
+
+// ── TYPING TEST ──
+const sents=["Artificial intelligence is transforming how we detect and treat mental health disorders.",
+  "Speech markers reveal hidden signs of depression through acoustic feature analysis.",
+  "Vibe coding combines creativity and technical skills to build powerful AI applications.",
+  "MFCC pitch and amplitude measurements provide valuable insights into emotional states.",
+  "The future of healthcare lies in the intersection of data science and medical research."];
+let tS={s:'',started:false,timer:null,secs:30};
+function initT(){
+  tS.s=sents[Math.floor(Math.random()*sents.length)];
+  tS.started=false; tS.secs=30; clearInterval(tS.timer);
+  document.getElementById('wv').textContent='0';
+  document.getElementById('av').textContent='100';
+  document.getElementById('tv2').textContent='30';
+  document.getElementById('ty-i').value='';
+  document.getElementById('ty-i').disabled=false;
+  renderT('');
+}
+function renderT(v){
+  let h=''; const s=tS.s;
+  for(let i=0;i<s.length;i++){
+    if(i<v.length) h+=`<span class="${v[i]===s[i]?'tc':'tw'}">${s[i]}</span>`;
+    else if(i===v.length) h+=`<span style="border-left:2px solid var(--blue)">${s[i]}</span>`;
+    else h+=`<span class="tp">${s[i]}</span>`;
+  }
+  document.getElementById('ty-d').innerHTML=h;
+}
+document.getElementById('ty-i').addEventListener('input',function(){
+  if(!tS.started){
+    tS.started=true; const t0=Date.now();
+    tS.timer=setInterval(()=>{
+      tS.secs--;
+      document.getElementById('tv2').textContent=tS.secs;
+      const mins=(Date.now()-t0)/60000,words=this.value.trim().split(/\s+/).filter(Boolean).length;
+      document.getElementById('wv').textContent=Math.round(words/mins)||0;
+      if(tS.secs<=0){clearInterval(tS.timer);document.getElementById('ty-i').disabled=true;}
+    },1000);
+  }
+  const v=this.value; renderT(v);
+  let c=0; for(let i=0;i<v.length;i++) if(v[i]===tS.s[i]) c++;
+  document.getElementById('av').textContent=v.length?Math.round(c/v.length*100):100;
+  if(v===tS.s){clearInterval(tS.timer);document.getElementById('ty-i').disabled=true;}
+});
+document.getElementById('tyR').addEventListener('click',initT);
+initT();
+
+// ── BOSS GAME ──
+const bossFacts=[
+  {tag:'RESEARCH',fact:'Working at AIIMS New Delhi',sub:'Contributing to AI-powered mental health research under Prof. Dr. Nand Kumar — one of India\'s leading psychiatrists.'},
+  {tag:'AI DEVELOPER',fact:'Built 6 AI Applications',sub:'Deployed real-world tools on Google AI Studio for healthcare, speech analysis, and productivity — all working live.'},
+  {tag:'EXPERIENCE',fact:'4+ Years Combined Experience',sub:'Research associate, data officer, and graphic designer across healthcare, government, and design sectors.'},
+  {tag:'EDUCATION',fact:'MCA + B.Sc. Computer Science',sub:'Master of Computer Applications from a recognized university, combined with a B.Sc. and multiple technical certifications.'},
+  {tag:'CREATIVE',fact:'Adobe Creative Cloud Expert',sub:'Proficient in the full Adobe suite plus 3D design, animation, and motion design — bringing visual creativity to every project.'},
+  {tag:'TYPING SPEED',fact:'55+ Words Per Minute',sub:'Fast, accurate typist with strong MS Excel and Microsoft Office skills — zero errors on critical data entry tasks.'},
+  {tag:'INNOVATION',fact:'Vibe Coding Champion',sub:'Mastery of AI-assisted development using LLMs and prompt engineering to build complex applications rapidly and creatively.'},
+];
+let bIdx=0, bScore=0, bAnswered=[];
+
+function buildBossUI(){
+  const stack=document.getElementById('bstack');
+  const pprog=document.getElementById('bprog');
+  stack.innerHTML=''; pprog.innerHTML='';
+  bossFacts.forEach((_,i)=>{
+    const dot=document.createElement('div'); dot.className='bp-dot'; dot.id='bp'+i; pprog.appendChild(dot);
+  });
+  renderBossCards();
+  document.getElementById('bresult').style.display='none';
+  document.getElementById('bbtns').style.display='flex';
+}
+
+function renderBossCards(){
+  const stack=document.getElementById('bstack'); stack.innerHTML='';
+  for(let i=Math.min(bIdx+2,bossFacts.length-1); i>=bIdx; i--){
+    if(i>=bossFacts.length) continue;
+    const f=bossFacts[i], card=document.createElement('div');
+    card.className='boss-card';
+    card.innerHTML=`<div class="bc-tag">${f.tag}</div><div class="bc-fact">${f.fact}</div><div class="bc-sub">${f.sub}</div>`;
+    const offset=i-bIdx;
+    if(offset===0) card.classList.add('active');
+    else if(offset===1) card.classList.add('behind1');
+    else card.classList.add('behind2');
+    stack.appendChild(card);
+  }
+  for(let i=0;i<bIdx;i++){const d=document.getElementById('bp'+i);if(d)d.classList.add('done');}
+}
+
+function bossAnswer(yes){
+  if(bIdx>=bossFacts.length) return;
+  bAnswered.push(yes);
+  if(yes) bScore++;
+  const active=document.querySelector('.boss-card.active');
+  if(active){
+    active.classList.add(yes?'exit-yes':'exit-no');
+    setTimeout(()=>{
+      bIdx++;
+      if(bIdx>=bossFacts.length){ showBossResult(); }
+      else { renderBossCards(); }
+    },380);
+  }
+}
+
+function showBossResult(){
+  document.getElementById('bbtns').style.display='none';
+  document.getElementById('bstack').innerHTML='';
+  const r=document.getElementById('bresult'); r.style.display='block';
+  const pct=Math.round(bScore/bossFacts.length*100);
+  let title,sub;
+  if(pct>=80){title='🏆 You\'re Hired!';sub='Outstanding candidate! Shubham\'s skills and research background make him an exceptional addition to any team.';}
+  else if(pct>=50){title='👍 Strong Candidate';sub='Great profile! Shubham has a solid mix of technical and creative skills — worth a deeper conversation.';}
+  else{title='🤔 Reconsidering?';sub='Even the best bosses miss great talent sometimes. Take another look — the skills speak for themselves!';}
+  document.getElementById('br-title').textContent=title;
+  document.getElementById('br-sub').textContent=sub;
+  setTimeout(()=>{ document.getElementById('bmfill').style.width=pct+'%'; },100);
+  for(let i=0;i<bossFacts.length;i++){const d=document.getElementById('bp'+i);if(d)d.classList.add('done');}
+}
+
+document.getElementById('bYes').addEventListener('click',()=>bossAnswer(true));
+document.getElementById('bNo').addEventListener('click',()=>bossAnswer(false));
+document.getElementById('bRestart').addEventListener('click',()=>{ bIdx=0;bScore=0;bAnswered=[]; buildBossUI(); });
+buildBossUI();
+</script>
+</body>
+</html>
