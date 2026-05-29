@@ -376,6 +376,86 @@ footer p{font-size:12px;color:#555;}
   </div>
 </div></section>
 
+<!-- TWEENLAB YOUTUBE SECTION -->
+<section id="tweenlab" style="padding:0;overflow:hidden;border-bottom:1px solid var(--border);">
+
+  <div class="wrap" style="padding-top:80px;padding-bottom:40px;">
+    <div class="reveal">
+      <p class="sec-label">// Creative Work</p>
+      <h2 class="sec-title">TweenLab on <em>YouTube</em></h2>
+    </div>
+  </div>
+
+  <!-- Apple Music-style Player -->
+  <div id="ytWrap" style="position:relative;width:100%;overflow:hidden;padding:36px 0 52px;min-height:520px;">
+
+    <!-- Dynamic ambient background -->
+    <div id="ytBg" style="position:absolute;inset:0;transition:background 1.2s ease;background:linear-gradient(160deg,#061a24 0%,#0b3040 30%,#0e4a5c 55%,#071e2b 100%);"></div>
+
+    <!-- Ambient glow blobs -->
+    <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden;">
+      <div id="glow1" style="position:absolute;width:600px;height:600px;border-radius:50%;filter:blur(80px);opacity:.25;background:radial-gradient(circle,#00c8e8 0%,transparent 70%);top:-150px;left:50%;transform:translateX(-50%);transition:background 1.2s;"></div>
+      <div id="glow2" style="position:absolute;width:350px;height:350px;border-radius:50%;filter:blur(60px);opacity:.18;background:radial-gradient(circle,#0099bb 0%,transparent 70%);bottom:-80px;left:10%;transition:background 1.2s;"></div>
+      <div id="glow3" style="position:absolute;width:320px;height:320px;border-radius:50%;filter:blur(60px);opacity:.18;background:radial-gradient(circle,#00b4cc 0%,transparent 70%);bottom:-80px;right:10%;transition:background 1.2s;"></div>
+    </div>
+
+    <!-- Browser bar -->
+    <div style="position:relative;z-index:2;max-width:600px;margin:0 auto 32px;background:rgba(255,255,255,.1);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:9px 16px;display:flex;align-items:center;gap:10px;">
+      <div style="display:flex;gap:5px;flex-shrink:0;">
+        <span style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.2);display:block;"></span>
+        <span style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.2);display:block;"></span>
+        <span style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.2);display:block;"></span>
+      </div>
+      <div style="flex:1;background:rgba(0,0,0,.3);border-radius:7px;padding:5px 12px;text-align:center;font-family:'DM Mono',monospace;font-size:11.5px;color:rgba(255,255,255,.75);letter-spacing:.5px;border:1px solid rgba(255,255,255,.08);">youtube.com/@Tweenlab</div>
+      <a href="https://www.youtube.com/@Tweenlab/featured" target="_blank" style="color:rgba(255,255,255,.6);font-size:15px;text-decoration:none;width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.12);transition:all .2s;cursor:none;" onmouseover="this.style.background='rgba(255,255,255,.2)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">↗</a>
+    </div>
+
+    <!-- 3D Carousel Stage -->
+    <div id="ytStage" style="position:relative;z-index:2;height:340px;display:flex;align-items:center;justify-content:center;perspective:1100px;perspective-origin:50% 50%;">
+      <!-- cards injected by JS -->
+    </div>
+
+    <!-- Player Bar -->
+    <div style="position:relative;z-index:2;max-width:640px;margin:28px auto 0;background:rgba(255,255,255,.1);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:14px 20px;display:flex;align-items:center;gap:14px;">
+
+      <div id="ytThumb" style="width:44px;height:44px;border-radius:10px;overflow:hidden;flex-shrink:0;background:rgba(255,255,255,.1);transition:all .4s;">
+        <img id="ytThumbImg" src="" style="width:100%;height:100%;object-fit:cover;display:none;">
+      </div>
+
+      <div style="flex:1;min-width:0;">
+        <div id="ytTitle" style="font-size:13px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px;"></div>
+        <div style="font-size:10px;color:rgba(255,255,255,.45);letter-spacing:.5px;font-family:'DM Mono',monospace;">TWEENLAB · ANIMATION & MOTION DESIGN</div>
+        <div style="height:2px;background:rgba(255,255,255,.15);border-radius:2px;margin-top:6px;overflow:hidden;">
+          <div id="ytProg" style="height:100%;border-radius:2px;background:rgba(255,255,255,.8);width:0%;transition:width 8s linear;"></div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+        <button id="ytPrevBtn" style="background:none;border:none;color:rgba(255,255,255,.7);cursor:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .2s;" onmouseover="this.style.background='rgba(255,255,255,.15)'" onmouseout="this.style.background='none'">⏮</button>
+        <button id="ytPlayBtn" style="background:#fff;border:none;cursor:none;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .2s;box-shadow:0 2px 16px rgba(0,0,0,.35);" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">⏸</button>
+        <button id="ytNextBtn" style="background:none;border:none;color:rgba(255,255,255,.7);cursor:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .2s;" onmouseover="this.style.background='rgba(255,255,255,.15)'" onmouseout="this.style.background='none'">⏭</button>
+        <a href="https://www.youtube.com/@Tweenlab/featured" target="_blank" style="background:rgba(255,30,30,.2);border:1px solid rgba(255,80,80,.4);color:#ff9090;font-size:10px;font-weight:700;letter-spacing:1px;padding:6px 12px;border-radius:6px;text-decoration:none;transition:all .2s;cursor:none;white-space:nowrap;font-family:'DM Mono',monospace;" onmouseover="this.style.background='rgba(255,0,0,.5)';this.style.color='#fff';" onmouseout="this.style.background='rgba(255,30,30,.2)';this.style.color='#ff9090';">▶ SUBSCRIBE</a>
+      </div>
+    </div>
+
+    <p style="position:relative;z-index:2;text-align:center;margin-top:14px;font-size:10px;font-family:'DM Mono',monospace;color:rgba(255,255,255,.25);letter-spacing:2px;">← → ARROW KEYS · CLICK CARD TO WATCH</p>
+  </div>
+
+  <!-- Video Modal -->
+  <div id="ytModal" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.88);backdrop-filter:blur(12px);align-items:center;justify-content:center;" onclick="if(event.target===this)closeYT()">
+    <div style="width:min(92vw,900px);background:#0a1a26;border-radius:20px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.9);border:1px solid rgba(255,255,255,.1);">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.08);">
+        <div id="modalTitle" style="font-size:14px;font-weight:700;color:#fff;"></div>
+        <button onclick="closeYT()" style="background:rgba(255,255,255,.1);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:none;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .2s;" onmouseover="this.style.background='rgba(255,255,255,.25)'" onmouseout="this.style.background='rgba(255,255,255,.1)'">×</button>
+      </div>
+      <div style="position:relative;padding-bottom:56.25%;height:0;">
+        <iframe id="ytFrame" src="" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allow="autoplay;encrypted-media;fullscreen" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+</section>
+
 <!-- PROJECTS -->
 <section id="projects"><div class="wrap">
   <div class="reveal"><p class="sec-label">// What I've Built</p><h2 class="sec-title">AI <em>Applications</em></h2></div>
@@ -743,6 +823,262 @@ document.getElementById('bYes').addEventListener('click',()=>bossAnswer(true));
 document.getElementById('bNo').addEventListener('click',()=>bossAnswer(false));
 document.getElementById('bRestart').addEventListener('click',()=>{ bIdx=0;bScore=0;bAnswered=[]; buildBossUI(); });
 buildBossUI();
+
+// ── YOUTUBE APPLE MUSIC CAROUSEL ──────────────────────────────────────────
+const YT_FALLBACK = [
+  {id:'dQw4w9WgXcQ',title:'Animation Showreel 2024',desc:'2D & 3D Motion Graphics'},
+  {id:'jNQXAC9IVRw',title:'Motion Design Breakdown',desc:'After Effects Tutorial'},
+  {id:'9bZkp7q19f0',title:'Character Animation Loop',desc:'2D Character Rigging'},
+  {id:'kJQP7kiw5Fk',title:'Kinetic Typography',desc:'Text Animation & Design'},
+  {id:'fJ9rUzIMcZQ',title:'3D Scene Composition',desc:'Cinema 4D + After Effects'},
+  {id:'OPf0YbXqDm0',title:'Logo Animation Pack',desc:'Brand Motion Design'},
+];
+
+let ytCards=[], ytIdx=0, ytPlaying=true, ytAutoTimer=null, ytProgressInterval=null;
+
+// Palette for ambient glow color shifts
+const YT_PALETTES=[
+  ['#003d52','#005c7a','#004a63'],
+  ['#1a0030','#3d0060','#2a0050'],
+  ['#002a1a','#005a35','#003d25'],
+  ['#1a1500','#3d3200','#2a2200'],
+  ['#1a0010','#3d0025','#2a0018'],
+  ['#001a3d','#003080','#001e5c'],
+];
+
+async function fetchYTFeed(){
+  const PROXIES=[
+    'https://api.allorigins.win/raw?url=',
+    'https://corsproxy.io/?',
+  ];
+  const FEED='https://www.youtube.com/feeds/videos.xml?user=Tweenlab';
+  for(const proxy of PROXIES){
+    try{
+      const r=await fetch(proxy+encodeURIComponent(FEED),{signal:AbortSignal.timeout(5000)});
+      if(!r.ok) continue;
+      const xml=await r.text();
+      const parser=new DOMParser();
+      const doc=parser.parseFromString(xml,'application/xml');
+      const entries=doc.querySelectorAll('entry');
+      if(!entries.length) continue;
+      const result=[];
+      entries.forEach(e=>{
+        const id=e.querySelector('videoId')?.textContent||e.querySelector('id')?.textContent?.split(':').pop()||'';
+        const title=e.querySelector('title')?.textContent||'TweenLab Video';
+        const desc=e.querySelector('group description')?.textContent?.slice(0,60)||'Animation & Motion Design';
+        if(id) result.push({id,title,desc});
+      });
+      if(result.length) return result;
+    }catch(e){}
+  }
+  return null;
+}
+
+function ytThumbUrl(id,q='hqdefault'){
+  return `https://i.ytimg.com/vi/${id}/${q}.jpg`;
+}
+
+function buildYTCards(data){
+  ytCards=data;
+  renderYTCarousel();
+  updateYTBar();
+  startYTProgress();
+}
+
+function renderYTCarousel(){
+  const stage=document.getElementById('ytStage');
+  if(!stage||!ytCards.length) return;
+  stage.innerHTML='';
+
+  const total=ytCards.length;
+  const visible=[-2,-1,0,1,2];
+
+  visible.forEach(offset=>{
+    const idx=(ytIdx+offset+total)%total;
+    const card=ytCards[idx];
+    const el=document.createElement('div');
+
+    // Position transforms
+    const transforms={
+      '-2':{tx:'-82%', tz:'-180px', ry:'22deg', sc:.72, z:1, op:.45, shadow:'none'},
+      '-1':{tx:'-52%', tz:'-80px', ry:'14deg', sc:.85, z:2, op:.75, shadow:'0 20px 60px rgba(0,0,0,.5)'},
+       '0':{tx:'0',    tz:'0px',   ry:'0deg',  sc:1,   z:3, op:1,   shadow:'0 32px 80px rgba(0,0,0,.7)'},
+       '1':{tx:'52%',  tz:'-80px', ry:'-14deg',sc:.85, z:2, op:.75, shadow:'0 20px 60px rgba(0,0,0,.5)'},
+       '2':{tx:'82%',  tz:'-180px',ry:'-22deg',sc:.72, z:1, op:.45, shadow:'none'},
+    };
+    const t=transforms[String(offset)];
+
+    el.style.cssText=`
+      position:absolute;
+      width:200px;height:280px;
+      border-radius:16px;overflow:hidden;
+      transform:translateX(${t.tx}) translateZ(${t.tz}) rotateY(${t.ry}) scale(${t.sc});
+      transform-origin:center center;
+      z-index:${t.z};
+      opacity:${t.op};
+      box-shadow:${t.shadow};
+      transition:all .5s cubic-bezier(.4,0,.2,1);
+      cursor:none;
+      backface-visibility:hidden;
+    `;
+
+    // Thumbnail
+    const img=document.createElement('img');
+    img.src=ytThumbUrl(card.id,'mqdefault');
+    img.onerror=()=>{ img.src=ytThumbUrl(card.id,'hqdefault'); };
+    img.style.cssText='width:100%;height:100%;object-fit:cover;display:block;';
+
+    // Overlay (always; stronger for non-center)
+    const overlay=document.createElement('div');
+    const isCenter=offset===0;
+    overlay.style.cssText=`
+      position:absolute;inset:0;
+      background:${isCenter
+        ? 'linear-gradient(to top,rgba(0,0,0,.75) 0%,rgba(0,0,0,.1) 50%,transparent 100%)'
+        : 'linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.3) 100%)'
+      };
+      transition:background .4s;
+    `;
+
+    // Label (bottom of card)
+    const label=document.createElement('div');
+    label.style.cssText=`
+      position:absolute;bottom:0;left:0;right:0;
+      padding:12px 14px;
+    `;
+    label.innerHTML=`
+      <div style="font-size:${isCenter?'13px':'11px'};font-weight:700;color:#fff;line-height:1.3;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${card.title}</div>
+      <div style="font-size:${isCenter?'10px':'9px'};color:rgba(255,255,255,.6);letter-spacing:.5px;font-family:'DM Mono',monospace;">TweenLab</div>
+    `;
+
+    // Play button (center only)
+    if(isCenter){
+      const playBtn=document.createElement('div');
+      playBtn.style.cssText=`
+        position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);
+        width:52px;height:52px;border-radius:50%;
+        background:rgba(255,255,255,.2);backdrop-filter:blur(8px);
+        border:2px solid rgba(255,255,255,.5);
+        display:flex;align-items:center;justify-content:center;
+        font-size:20px;color:#fff;
+        transition:all .2s;
+        opacity:0;
+      `;
+      playBtn.textContent='▶';
+      el.appendChild(img);
+      el.appendChild(overlay);
+      el.appendChild(playBtn);
+      el.appendChild(label);
+      el.addEventListener('mouseenter',()=>{
+        playBtn.style.opacity='1';
+        playBtn.style.background='rgba(255,255,255,.35)';
+        el.style.transform=`translateX(0) translateZ(20px) rotateY(0deg) scale(1.03)`;
+      });
+      el.addEventListener('mouseleave',()=>{
+        playBtn.style.opacity='0';
+        el.style.transform=`translateX(0) translateZ(0) rotateY(0deg) scale(1)`;
+      });
+      el.addEventListener('click',()=>openYT(card.id, card.title));
+    } else {
+      el.appendChild(img);
+      el.appendChild(overlay);
+      el.appendChild(label);
+      el.addEventListener('click',()=>{
+        const steps=offset<0?offset:offset;
+        for(let s=0;s<Math.abs(steps);s++){
+          offset<0 ? setTimeout(()=>ytPrev(),s*80) : setTimeout(()=>ytNext(),s*80);
+        }
+      });
+    }
+
+    stage.appendChild(el);
+  });
+
+  // Update ambient bg
+  const pal=YT_PALETTES[ytIdx % YT_PALETTES.length];
+  const bg=document.getElementById('ytBg');
+  if(bg) bg.style.background=`linear-gradient(160deg,${pal[0]} 0%,${pal[1]} 40%,${pal[2]} 70%,#040a10 100%)`;
+  const g1=document.getElementById('glow1');
+  if(g1) g1.style.background=`radial-gradient(circle,${pal[1]} 0%,transparent 70%)`;
+}
+
+function updateYTBar(){
+  if(!ytCards.length) return;
+  const c=ytCards[ytIdx];
+  const el=document.getElementById('ytTitle');
+  if(el) el.textContent=c.title;
+  const thumb=document.getElementById('ytThumbImg');
+  if(thumb){
+    thumb.src=ytThumbUrl(c.id,'mqdefault');
+    thumb.style.display='block';
+  }
+}
+
+function startYTProgress(){
+  const bar=document.getElementById('ytProg');
+  if(!bar) return;
+  clearInterval(ytProgressInterval);
+  bar.style.transition='none';
+  bar.style.width='0%';
+  if(!ytPlaying) return;
+  setTimeout(()=>{
+    bar.style.transition='width 12s linear';
+    bar.style.width='100%';
+    ytProgressInterval=setTimeout(()=>{ ytPlaying&&ytNext(); },12000);
+  },50);
+}
+
+function ytNext(){
+  ytIdx=(ytIdx+1)%ytCards.length;
+  renderYTCarousel(); updateYTBar(); startYTProgress();
+}
+function ytPrev(){
+  ytIdx=(ytIdx-1+ytCards.length)%ytCards.length;
+  renderYTCarousel(); updateYTBar(); startYTProgress();
+}
+function ytPlayToggle(){
+  ytPlaying=!ytPlaying;
+  const btn=document.getElementById('ytPlayBtn');
+  if(btn) btn.textContent=ytPlaying?'⏸':'▶';
+  startYTProgress();
+}
+function openYT(id, title){
+  const modal=document.getElementById('ytModal');
+  const frame=document.getElementById('ytFrame');
+  const mt=document.getElementById('modalTitle');
+  if(modal&&frame){
+    frame.src=`https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+    if(mt) mt.textContent=title;
+    modal.style.display='flex';
+    ytPlaying=false;
+    const btn=document.getElementById('ytPlayBtn');
+    if(btn) btn.textContent='▶';
+  }
+}
+function closeYT(){
+  const modal=document.getElementById('ytModal');
+  const frame=document.getElementById('ytFrame');
+  if(modal){ modal.style.display='none'; }
+  if(frame){ frame.src=''; }
+}
+
+// Keyboard nav
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowLeft') ytPrev();
+  if(e.key==='ArrowRight') ytNext();
+  if(e.key==='Escape') closeYT();
+});
+
+// Wire up buttons
+document.getElementById('ytPrevBtn')?.addEventListener('click',ytPrev);
+document.getElementById('ytNextBtn')?.addEventListener('click',ytNext);
+document.getElementById('ytPlayBtn')?.addEventListener('click',ytPlayToggle);
+
+// Init: try RSS first, fallback to static cards
+(async()=>{
+  const data=await fetchYTFeed();
+  buildYTCards(data&&data.length ? data : YT_FALLBACK);
+})();
 </script>
 </body>
 </html>
