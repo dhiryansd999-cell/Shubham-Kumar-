@@ -133,20 +133,9 @@ section{padding:96px 0;}
 .exp-org{font-size:12px;color:var(--blue);font-weight:600;margin-bottom:10px;}
 .exp-desc{font-size:13px;color:var(--mid);line-height:1.8;}
 
-/* PROJECTS */
-#projects{background:var(--bg2);border-bottom:1px solid var(--border);}
-.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-.proj-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;box-shadow:var(--sh);transition:all .35s;display:flex;flex-direction:column;}
-.proj-card:hover{box-shadow:var(--sh2);transform:translateY(-5px);border-color:var(--blue);}
-.proj-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue);letter-spacing:2px;margin-bottom:12px;}
-.proj-icon{width:44px;height:44px;background:var(--blue-l);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px;}
-.proj-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;}
-.ptag{padding:3px 9px;background:var(--blue-l);color:var(--blue);border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px;}
-.proj-title{font-size:14px;font-weight:800;color:var(--black);margin-bottom:8px;line-height:1.3;}
-.proj-desc{font-size:12px;color:var(--mid);line-height:1.7;flex:1;margin-bottom:16px;}
+/* Reused by the Experience section's external-link line */
 .proj-link{font-size:11px;font-weight:700;color:var(--blue);text-decoration:none;letter-spacing:.5px;display:inline-flex;align-items:center;gap:5px;transition:gap .2s;}
 .proj-link:hover{gap:9px;}
-.proj-card.feat{grid-column:span 2;}
 
 /* SKILLS */
 #skills{background:var(--bg);border-bottom:1px solid var(--border);}
@@ -333,8 +322,6 @@ footer p{font-size:11px;color:#444;}
   .about-grid{grid-template-columns:1fr;gap:28px;}
   .exp-item{grid-template-columns:1fr;gap:10px;}
   .exp-period{display:flex;align-items:center;gap:10px;}
-  .proj-grid{grid-template-columns:1fr;}
-  .proj-card.feat{grid-column:auto;}
   .sk-wrap{grid-template-columns:1fr;gap:36px;}
   .edu-grid{grid-template-columns:1fr 1fr;}
   .act-grid{grid-template-columns:1fr;}
@@ -423,7 +410,6 @@ footer p{font-size:11px;color:#444;}
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
     <li><a href="#tweenlab">TweenLab</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -436,7 +422,6 @@ footer p{font-size:11px;color:#444;}
 <div class="mobile-menu" id="mmenu">
   <a href="#about" class="mm-link">About</a>
   <a href="#experience" class="mm-link">Experience</a>
-  <a href="#projects" class="mm-link">Projects</a>
   <a href="#tweenlab" class="mm-link">TweenLab</a>
   <a href="#skills" class="mm-link">Skills</a>
   <a href="#contact" class="mm-link">Contact</a>
@@ -479,7 +464,7 @@ footer p{font-size:11px;color:#444;}
           <p style="font-size:14px;color:var(--mid);margin-top:12px;line-height:1.7;max-width:320px;">Turning complex ideas into impactful tools &amp; stunning visuals through AI &amp; creative design.</p>
         </div>
         <div class="bento-btns">
-          <a href="#projects" class="btn-blue" id="viewWorkBtn">View My Work →</a>
+          <a href="#tweenlab" class="btn-blue" id="viewWorkBtn">View My Work →</a>
           <button class="btn-out" id="heroDlBtn">⬇ Download CV</button>
           <a href="mailto:dhiryansd999@gmail.com?subject=Opportunity%20for%20Shubham%20Kumar" class="btn-out">Get In Touch</a>
         </div>
@@ -658,57 +643,6 @@ footer p{font-size:11px;color:#444;}
 </div></section>
 
 <!-- PROJECTS -->
-<section id="projects"><div class="wrap">
-  <div class="reveal"><p class="sec-label">// What I've Built</p><h2 class="sec-title">AI <em>Applications</em></h2></div>
-  <div class="proj-grid">
-    <div class="proj-card feat reveal">
-      <div class="proj-num">01 — FEATURED</div>
-      <div class="proj-icon">🎵</div>
-      <div class="proj-tags"><span class="ptag">AI</span><span class="ptag">Mental Health</span><span class="ptag">Voice Analysis</span></div>
-      <div class="proj-title">VocalMind: Depression &amp; Stress Analyzer</div>
-      <p class="proj-desc">Advanced voice analysis tool extracting acoustic features (MFCC, pitch, amplitude) to detect signs of depression and stress. Directly extends the research at AIIMS New Delhi.</p>
-      <a href="https://ai.studio/apps/c7776c81-c60b-4325-b712-234da5cbdccd?fullscreenApplet=true" target="_blank" class="proj-link">Launch Application →</a>
-    </div>
-    <div class="proj-card reveal d1">
-      <div class="proj-num">02</div>
-      <div class="proj-icon">🎨</div>
-      <div class="proj-tags"><span class="ptag">AI</span><span class="ptag">Image</span></div>
-      <div class="proj-title">Whisk AI Shot Prompt Generator</div>
-      <p class="proj-desc">AI-powered shot prompt generator built on Google AI Studio using Whisk for creative visual prompting and image generation workflows.</p>
-      <a href="https://ai.studio/apps/96460eca-df0a-4d88-95f0-b9d6c9415312?fullscreenApplet=true" target="_blank" class="proj-link">Launch →</a>
-    </div>
-    <div class="proj-card reveal d1">
-      <div class="proj-num">03</div>
-      <div class="proj-icon">🧠</div>
-      <div class="proj-tags"><span class="ptag">AI</span><span class="ptag">Medical</span></div>
-      <div class="proj-title">AIIMS CRE Daily Prep</div>
-      <p class="proj-desc">AI-powered study companion for AIIMS Common Recruitment Examination (Group B &amp; C) with personalized schedules and adaptive practice.</p>
-      <a href="https://ai.studio/apps/d28c88ab-c09d-40f9-80f0-6383ca33f2da?fullscreenApplet=true" target="_blank" class="proj-link">Launch →</a>
-    </div>
-    <div class="proj-card reveal d2">
-      <div class="proj-num">04</div>
-      <div class="proj-icon">📄</div>
-      <div class="proj-tags"><span class="ptag">AI</span><span class="ptag">Productivity</span></div>
-      <div class="proj-title">SmartScan Form Filler</div>
-      <p class="proj-desc">AI document scanner that intelligently auto-names documents and prepares them for Google Form submission — eliminating manual effort.</p>
-      <a href="https://ai.studio/apps/f76f9e7e-6735-4ce2-bbd9-f7119c66c75d?fullscreenApplet=true" target="_blank" class="proj-link">Launch →</a>
-    </div>
-    <div class="proj-card reveal d2">
-      <div class="proj-num">05</div>
-      <div class="proj-icon">🎙️</div>
-      <div class="proj-tags"><span class="ptag">AI</span><span class="ptag">Audio</span><span class="ptag">Research</span></div>
-      <div class="proj-title">ELAN Audio Segmenter</div>
-      <p class="proj-desc">Upload audio and automatically segment into INTERVIEWER, PATIENT, NOISE and FILLER tiers for ELAN linguistic annotation.</p>
-      <a href="https://ai.studio/apps/bcc4139a-747f-449e-ac94-ca832621c893?fullscreenApplet=true" target="_blank" class="proj-link">Launch →</a>
-    </div>
-    <div class="proj-card reveal d3" style="border-style:dashed;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:200px;">
-      <div style="font-size:28px;margin-bottom:10px">✦</div>
-      <div class="proj-title" style="color:var(--light)">More Coming Soon</div>
-      <p class="proj-desc" style="font-size:11px">Next-gen AI tools in mental health, audio analysis &amp; healthcare automation.</p>
-    </div>
-  </div>
-</div></section>
-
 <!-- SKILLS -->
 <section id="skills"><div class="wrap">
   <div class="reveal"><p class="sec-label">// Technical Stack</p><h2 class="sec-title">Skills &amp; <em>Expertise</em></h2></div>
@@ -834,7 +768,7 @@ if(mmDl) mmDl.addEventListener("click", downloadPDF);
 
 document.getElementById("viewWorkBtn").addEventListener("click", function(e){
   e.preventDefault();
-  document.getElementById("projects").scrollIntoView({behavior:"smooth"});
+  document.getElementById("tweenlab").scrollIntoView({behavior:"smooth"});
 });
 
 const ham = document.getElementById("ham");
